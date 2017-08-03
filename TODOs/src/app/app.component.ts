@@ -1,34 +1,30 @@
-import { Component } from '@angular/core';
-import {TodoDataService} from './todo-data.service';
+import {Component} from '@angular/core';
 import {Todo} from './todo';
+import {TodoDataService} from './todo-data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TodoDataService]
+  providers: []
 })
 export class AppComponent {
 
-  title = 'app works!';
-  //pushtest
-  newTodo: Todo = new Todo();
 
   constructor(private todoDataService: TodoDataService) {
-    }
-
-    addTodo() {
-    this.todoDataService.addTodo(this.newTodo);
-    this.newTodo = new Todo();
   }
 
-  toggleTodoComplete(todo) {
-    this.todoDataService.toggleTodoComplete(todo);
+  onAddTodo(todo: Todo) {
+    this.todoDataService.addTodo(todo);
   }
 
-  removeTodo(todo) {
-    this.todoDataService.deleteTodoById(todo.id);
-  }
+  onToggleTodoComplete(todo: Todo) {
+     this.todoDataService.toggleTodoComplete(todo);
+   }
+
+   onRemoveTodo(todo: Todo) {
+     this.todoDataService.deleteTodoById(todo.id);
+   }
 
   get todos() {
     return this.todoDataService.getAllTodos();
