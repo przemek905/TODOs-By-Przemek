@@ -23,7 +23,12 @@ export class ApiService {
       .get(API_URL + '/todos')
       .map(response => {
         const todos = response.json();
-        return todos.map((todo) => new Todo(todo));
+        let list : Todo[] = new Array<Todo>();
+        for (let todo of todos._embedded.todos) {
+          list.push(new Todo(todo));
+        }
+        //return todos.map((todo) => new Todo(todo));
+        return list;
       })
       .catch(this.handleError);
   }
