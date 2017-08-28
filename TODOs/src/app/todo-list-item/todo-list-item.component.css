@@ -1,0 +1,24 @@
+label[for='toggle-all'] {
+	display: none;
+}
+
+.toggle-all {
+	position: absolute;
+	top: -55px;
+	left: -12px;
+	width: 60px;
+	height: 34px;
+	text-align: center;
+	border: none; /* Mobile Safari */
+}
+
+.toggle-all:before {
+	content: '❯';
+	font-size: 22px;
+	color: #e6e6e6;
+	padding: 10px 27px 10px 27px;
+}
+
+.toggle-all:checked:before {
+	color: #737373;
+}
