@@ -16,6 +16,13 @@ export class TodoListItemComponent {
   @Output()
   toggleComplete: EventEmitter<Todo> = new EventEmitter();
 
+  @Output()
+  editTodo: EventEmitter<Todo> = new EventEmitter();
+
+  'todo.title': string;
+
+  // inputValue = (<HTMLInputElement>document.getElementById(name)).value;
+
   constructor() {
   }
 
@@ -25,6 +32,12 @@ export class TodoListItemComponent {
 
   removeTodo(todo: Todo) {
     this.remove.emit(todo);
+  }
+
+  editTodoDoubleClick(todo: Todo) {
+    this.editTodo.emit(todo);
+    this.todo.title = this.todo.title;
+    console.log('DoubleClick event todolist ITEM');
   }
 
 }
