@@ -24,6 +24,8 @@ export class TodoListItemComponent {
 
   'todo.title': string;
 
+  isReadOnly: boolean = true;
+
   constructor() {
   }
 
@@ -38,11 +40,13 @@ export class TodoListItemComponent {
   editTodoEnter(todo: Todo) {
     this.editTodo.emit(todo);
     this.todo.title = this.todo.title;
+    this.isReadOnly = true;
     console.log('ENTER event todolist ITEM');
   }
 
   enableEditTodo(todo: Todo) {
       this.enableEditTodoDoubleClick.emit(todo);
+      this.isReadOnly = false;
     console.log('DoubleClick event todolist ITEM');
   }
 
