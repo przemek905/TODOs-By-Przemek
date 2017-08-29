@@ -20,6 +20,9 @@ export class TodoListComponent {
   @Output()
   editTodo: EventEmitter<Todo> = new EventEmitter();
 
+  @Output()
+  enableEditTodoDoubleClick: EventEmitter<Todo> = new EventEmitter();
+
   constructor() {
     console.log('constructor');
   }
@@ -34,7 +37,12 @@ export class TodoListComponent {
 
   onUpdateTodo(todo: Todo) {
     this.editTodo.emit(todo);
-    console.log('DoubleClick event todo LIST');
+    console.log('ENTER event todo LIST');
+  }
+
+  onEnableEditingTodo(todo: Todo) {
+    this.enableEditTodoDoubleClick.emit(todo);
+    console.log('Double Click event todo LIST');
   }
 
 }

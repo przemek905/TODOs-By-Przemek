@@ -5,7 +5,8 @@
         [todo]="todo"
         (toggleComplete)="onToggleTodoComplete($event)"
         (remove)="onRemoveTodo($event)"
-        (editTodo)="onUpdateTodo($event)"></app-todo-list-item>
+        (editTodo)="onUpdateTodo($event)"
+        (enableEditTodoDoubleClick)="onEnableEditingTodo($event)"></app-todo-list-item>
     </li>
   </ul>
 </section>

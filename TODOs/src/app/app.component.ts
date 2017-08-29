@@ -66,4 +66,8 @@ export class AppComponent implements OnInit {
       }
     )
   }
+
+  onEnableEditingTodo(todo: Todo) {
+    console.log('Double Click event todo APP COMPONENT');
+  }
 }

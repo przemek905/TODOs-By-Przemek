@@ -19,9 +19,10 @@ export class TodoListItemComponent {
   @Output()
   editTodo: EventEmitter<Todo> = new EventEmitter();
 
-  'todo.title': string;
+  @Output()
+  enableEditTodoDoubleClick: EventEmitter<Todo> = new EventEmitter();
 
-  // inputValue = (<HTMLInputElement>document.getElementById(name)).value;
+  'todo.title': string;
 
   constructor() {
   }
@@ -34,9 +35,14 @@ export class TodoListItemComponent {
     this.remove.emit(todo);
   }
 
-  editTodoDoubleClick(todo: Todo) {
+  editTodoEnter(todo: Todo) {
     this.editTodo.emit(todo);
     this.todo.title = this.todo.title;
+    console.log('ENTER event todolist ITEM');
+  }
+
+  enableEditTodo(todo: Todo) {
+      this.enableEditTodoDoubleClick.emit(todo);
     console.log('DoubleClick event todolist ITEM');
   }
 
