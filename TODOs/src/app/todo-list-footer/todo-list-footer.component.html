@@ -1,3 +1,16 @@
 <footer class="footer" *ngIf="todos.length > 0">
-  <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+  <ul id="filters">
+    <li>
+      <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+    </li>
+		<li>
+			<button>All</button>
+		</li>
+		<li>
+			<button (click)="showActive(todos)">Active</button>
+		</li>
+		<li>
+			<button>Completed</button>
+		</li>
+	</ul>
 </footer>

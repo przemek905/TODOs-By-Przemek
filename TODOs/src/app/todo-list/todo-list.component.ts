@@ -23,6 +23,8 @@ export class TodoListComponent {
   @Output()
   enableEditTodoDoubleClick: EventEmitter<Todo> = new EventEmitter();
 
+  isHidden: boolean = false;
+
   constructor() {
     console.log('constructor');
   }

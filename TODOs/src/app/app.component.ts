@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from './todo-data.service';
 import { Todo } from './todo';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { Todo } from './todo';
 export class AppComponent implements OnInit {
 
   todos: Todo[] = [];
+  hidden: boolean = false;
 
   constructor(
     private todoDataService: TodoDataService
@@ -69,5 +71,10 @@ export class AppComponent implements OnInit {
 
   onEnableEditingTodo(todo: Todo) {
     console.log('Double Click event todo APP COMPONENT');
+  }
+
+  onShowActiveTodos(todos: Todo[]) {
+    console.log('APPP');
+    this.hidden = true;
   }
 }
