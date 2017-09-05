@@ -23,6 +23,9 @@ export class TodoListComponent {
   @Output()
   enableEditTodoDoubleClick: EventEmitter<Todo> = new EventEmitter();
 
+  @Output()
+  showActiveTodos: EventEmitter<Todo[]> = new EventEmitter();
+
   isHidden: boolean = false;
 
   constructor() {
@@ -45,6 +48,16 @@ export class TodoListComponent {
   onEnableEditingTodo(todo: Todo) {
     this.enableEditTodoDoubleClick.emit(todo);
     console.log('Double Click event todo LIST');
+  }
+
+  onShowActiveTodos(todos: Todo[]) {
+    this.showActiveTodos.emit(todos);
+    console.log('LIST');
+  }
+
+  showActive(todos: Todo[]) {
+    this.showActiveTodos.emit(todos);
+    console.log('LIST');
   }
 
 }

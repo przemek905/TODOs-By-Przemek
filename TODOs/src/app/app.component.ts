@@ -2,20 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from './todo-data.service';
 import { Todo } from './todo';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoFilterService } from './todo-filter.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [TodoDataService]
+  providers: [TodoDataService, TodoFilterService]
 })
 export class AppComponent implements OnInit {
 
   todos: Todo[] = [];
-  hidden: boolean = false;
 
   constructor(
-    private todoDataService: TodoDataService
+    private todoDataService: TodoDataService,
+    private todoFilterService: TodoFilterService
   ) {
   }
 
@@ -75,6 +76,6 @@ export class AppComponent implements OnInit {
 
   onShowActiveTodos(todos: Todo[]) {
     console.log('APPP');
-    this.hidden = true;
+    this.todoFilterService.isTodoHidden = true;
   }
 }
