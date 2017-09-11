@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
 import { TodoFilterService } from '../todo-filter.service';
+import 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -31,11 +33,18 @@ export class TodoListItemComponent {
 
   isReadOnly: boolean = true;
   isHidden: boolean = false;
+  // data1: Observable<boolean> = Observable.of(this.todoFilterService.isTodoHidden);
+
+  data: Observable<boolean> = Observable.create(observer => {
+    observer.next(this.todoFilterService.isTodoHidden);
+  })
 
   constructor(private todoFilterService: TodoFilterService) {
-    if(!this.todoFilterService.isTodoHidden) {
-      console.log('no kurwa');
-    }
+    this.data.subscribe(value => console.log(value));
+    console.log(this.data);
+
+    // this.data1.subscribe(value => console.log(value));
+    // console.log(this.data1);
   }
 
   toggleTodoComplete(todo: Todo) {
