@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
-import { TodoFilterService } from '../todo-filter.service';
+import { TodoFilterService, HidingTodos } from '../todo-filter.service';
 
 @Component({
   selector: 'app-todo-list-footer',
@@ -15,12 +15,28 @@ export class TodoListFooterComponent {
   @Output()
   showActiveTodos: EventEmitter<Todo[]> = new EventEmitter();
 
+  @Output()
+  showAllTodos: EventEmitter<Todo[]> = new EventEmitter();
+
+  @Output()
+  showCompletedTodos: EventEmitter<Todo[]> = new EventEmitter();
+
   constructor(private todoFilterService:TodoFilterService) {
   }
 
   showActive(todos: Todo[]) {
-    this.todoFilterService.updateHiddenFlag(true);
+    this.todoFilterService.updateHiddenFlag(HidingTodos.Active);
     console.log('ACTIVE From Footer');
+  }
+
+  showAll(todos: Todo[]) {
+    this.todoFilterService.updateHiddenFlag(HidingTodos.All);
+    console.log('ALL From Footer');
+  }
+
+  showCompleted(todos: Todo[]) {
+    this.todoFilterService.updateHiddenFlag(HidingTodos.Completed);
+    console.log('Completed From Footer');
   }
 
 }

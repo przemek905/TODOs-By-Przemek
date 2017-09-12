@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
-import { TodoFilterService } from '../todo-filter.service';
+import { TodoFilterService, HidingTodos } from '../todo-filter.service';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 
@@ -31,13 +31,26 @@ export class TodoListItemComponent {
   'todo.title': string;
 
   isReadOnly: boolean = true;
-  isHidden: boolean = false;
+  private state: HidingTodos = HidingTodos.All;
 
   constructor(private todoFilterService: TodoFilterService) {
   }
 
   public ngOnInit() {
-    this.todoFilterService.isTodoHidden.subscribe(value => this.isHidden = value);
+    this.todoFilterService.hideTodosType.subscribe(value => this.state = value);
+  }
+
+  public isHidden(): boolean {
+    if (this.state === HidingTodos.Active && !this.todo.complete) {
+      return false;
+    }
+    else if (this.state === HidingTodos.Completed && this.todo.complete) {
+      return false
+    }
+    else if (this.state === HidingTodos.All) {
+      return false;
+    }
+    return true;
   }
 
   toggleTodoComplete(todo: Todo) {

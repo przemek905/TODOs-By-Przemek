@@ -4,13 +4,13 @@
       <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
     </li>
 		<li>
-			<button>All</button>
+			<button (click)="showAll(todos)">All</button>
 		</li>
 		<li>
 			<button (click)="showActive(todos)">Active</button>
 		</li>
 		<li>
-			<button>Completed</button>
+			<button (click)="showCompleted(todos)">Completed</button>
 		</li>
 	</ul>
 </footer>
