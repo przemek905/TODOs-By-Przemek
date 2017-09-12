@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
+import { TodoFilterService } from '../todo-filter.service';
 
 @Component({
   selector: 'app-todo-list-footer',
@@ -14,12 +15,12 @@ export class TodoListFooterComponent {
   @Output()
   showActiveTodos: EventEmitter<Todo[]> = new EventEmitter();
 
-  constructor() {
+  constructor(private todoFilterService:TodoFilterService) {
   }
 
   showActive(todos: Todo[]) {
-    this.showActiveTodos.emit(todos);
-    console.log('ACTIVE');
+    this.todoFilterService.updateHiddenFlag(true);
+    console.log('ACTIVE From Footer');
   }
 
 }

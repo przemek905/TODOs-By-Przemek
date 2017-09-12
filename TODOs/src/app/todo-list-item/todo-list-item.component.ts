@@ -7,8 +7,7 @@ import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'app-todo-list-item',
   templateUrl: './todo-list-item.component.html',
-  styleUrls: ['./todo-list-item.component.css'],
-  providers: [TodoFilterService]
+  styleUrls: ['./todo-list-item.component.css']
 })
 export class TodoListItemComponent {
 
@@ -33,18 +32,12 @@ export class TodoListItemComponent {
 
   isReadOnly: boolean = true;
   isHidden: boolean = false;
-  // data1: Observable<boolean> = Observable.of(this.todoFilterService.isTodoHidden);
-
-  data: Observable<boolean> = Observable.create(observer => {
-    observer.next(this.todoFilterService.isTodoHidden);
-  })
 
   constructor(private todoFilterService: TodoFilterService) {
-    this.data.subscribe(value => console.log(value));
-    console.log(this.data);
+  }
 
-    // this.data1.subscribe(value => console.log(value));
-    // console.log(this.data1);
+  public ngOnInit() {
+    this.todoFilterService.isTodoHidden.subscribe(value => this.isHidden = value);
   }
 
   toggleTodoComplete(todo: Todo) {
@@ -66,16 +59,6 @@ export class TodoListItemComponent {
       this.enableEditTodoDoubleClick.emit(todo);
       this.isReadOnly = false;
     console.log('DoubleClick event todolist ITEM');
-  }
-
-  onShowActiveTodos(todos: Todo[]) {
-    this.showActiveTodos.emit(todos);
-    console.log('ITEM');
-  }
-
-  showActive(todos: Todo[]) {
-    this.showActiveTodos.emit(todos);
-    console.log('ITEM');
   }
 
 }

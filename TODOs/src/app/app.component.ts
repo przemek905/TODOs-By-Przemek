@@ -13,6 +13,7 @@ import { TodoFilterService } from './todo-filter.service';
 export class AppComponent implements OnInit {
 
   todos: Todo[] = [];
+  hideTodo: boolean = false;
 
   constructor(
     private todoDataService: TodoDataService,
@@ -70,12 +71,4 @@ export class AppComponent implements OnInit {
     )
   }
 
-  onEnableEditingTodo(todo: Todo) {
-    console.log('Double Click event todo APP COMPONENT');
-  }
-
-  onShowActiveTodos(todos: Todo[]) {
-    console.log('APPP');
-    this.todoFilterService.isTodoHidden = true;
-  }
 }

@@ -1,13 +1,11 @@
 <section class="main" *ngIf="todos.length > 0">
   <ul class="todo-list">
-    <li [hidden]="isHidden" *ngFor="let todo of todos" [class.completed]="todo.complete">
+    <li *ngFor="let todo of todos" [class.completed]="todo.complete">
       <app-todo-list-item
         [todo]="todo"
         (toggleComplete)="onToggleTodoComplete($event)"
         (remove)="onRemoveTodo($event)"
-        (editTodo)="onUpdateTodo($event)"
-        (enableEditTodoDoubleClick)="onEnableEditingTodo($event)"
-        (showActiveTodos)="onShowActiveTodos($event)"></app-todo-list-item>
+        (editTodo)="onUpdateTodo($event)"></app-todo-list-item>
     </li>
   </ul>
 </section>
