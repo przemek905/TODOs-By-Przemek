@@ -24,6 +24,16 @@ export class TodoListFooterComponent {
   constructor(private todoFilterService:TodoFilterService) {
   }
 
+  todoCount(): number {
+    let num = 0;
+    for(let todo of this.todos) {
+      if(!todo.complete) {
+        num++;
+      }
+    }
+    return num;
+  }
+
   showActive(todos: Todo[]) {
     this.todoFilterService.updateHiddenFlag(HidingTodos.Active);
     console.log('ACTIVE From Footer');
