@@ -10,6 +10,24 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.component';
 import { ApiService } from './api.service';
 import { TodoFilterService } from './todo-filter.service';
+import { RouterModule, Routes } from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { TodosComponent } from './todos/todos.component';
+
+const appRoutes: Routes = [
+  {
+    path: 'todos',
+    component: TodosComponent
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent
+  },
+  { path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -17,12 +35,15 @@ import { TodoFilterService } from './todo-filter.service';
     TodoListHeaderComponent,
     TodoListComponent,
     TodoListItemComponent,
-    TodoListFooterComponent
+    TodoListFooterComponent,
+    WelcomeComponent,
+    TodosComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [TodoDataService, ApiService, TodoFilterService],
   bootstrap: [AppComponent]
