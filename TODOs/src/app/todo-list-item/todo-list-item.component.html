@@ -1,6 +1,6 @@
 <div class="view" [hidden]="isHidden()" (showActiveTodos)="onShowActiveTodos($event)">
   <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-  <input type="text" [readonly]="isReadOnly" value={{todo.title}} [(ngModel)]="todo.title" id="name"
+  <input class="todobox" type="text" [readonly]="isReadOnly" value={{todo.title}} [(ngModel)]="todo.title" id="name"
   (dblclick)="enableEditTodo(todo)" (keyup.enter)="editTodoEnter(todo)" />
   <button class="destroy" (click)="removeTodo(todo)"></button>
 </div>

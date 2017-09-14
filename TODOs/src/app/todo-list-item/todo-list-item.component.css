@@ -1,24 +1,53 @@
-label[for='toggle-all'] {
-	display: none;
+
+.toggle:after {
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
 }
 
-.toggle-all {
-	position: absolute;
-	top: -55px;
-	left: -12px;
-	width: 60px;
-	height: 34px;
+.toggle:checked:after {
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+
+.view {
+}
+
+.toggle {
 	text-align: center;
-	border: none; /* Mobile Safari */
+	width: 40px;
+	height: auto;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	-webkit-appearance: none;
+	appearance: none;
+	position: relative;
 }
 
-.toggle-all:before {
-	content: '❯';
-	font-size: 22px;
-	color: #e6e6e6;
-	padding: 10px 27px 10px 27px;
+.todobox {
+	flex:2;
+	border:none;
+	position: relative;
+	font-size: 24px;
 }
 
-.toggle-all:checked:before {
-	color: #737373;
+.destroy {
+	border:none;
+	background-color: #FFFFFF;
+	top: 0;
+	right: 10px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 30px;
+	color: #cc9a9a;
+	margin-bottom: 11px;
+	transition: color 0.2s ease-out;
+}
+
+.destroy:hover {
+	color: #af5b5e;
+}
+
+.destroy:after {
+	content: '×';
 }
