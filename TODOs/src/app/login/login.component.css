@@ -1,0 +1,88 @@
+.alert {
+  width:200px;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.alert.alert-info {
+  color:#607D8B;
+}
+
+.alert.alert-error {
+  color:red;
+}
+
+.help-block {
+  width:200px;
+  color:white;
+  background-color:gray;
+}
+
+
+.btn {
+  margin-top:20px;
+}
+
+.form-group {
+  margin-top: 15px;
+}
+
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+label {
+  font-weight: bold;
+}
+
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    margin: 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}

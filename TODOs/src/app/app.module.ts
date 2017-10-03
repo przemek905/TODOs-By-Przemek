@@ -13,14 +13,23 @@ import { TodoFilterService } from './todo-filter.service';
 import { RouterModule, Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { TodosComponent } from './todos/todos.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './authentication.service';
+import { CanActivateAuthGuard } from './CanActivateAuthGuard';
+
 
 const appRoutes: Routes = [
   {
     path: 'todos',
-    component: TodosComponent
+    component: TodosComponent,
+    canActivate: [CanActivateAuthGuard]
   },
   {
     path: 'welcome',
+    component: WelcomeComponent
+  },
+  {
+    path: 'logout',
     component: WelcomeComponent
   },
   { path: '',
@@ -37,7 +46,8 @@ const appRoutes: Routes = [
     TodoListItemComponent,
     TodoListFooterComponent,
     WelcomeComponent,
-    TodosComponent
+    TodosComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -45,7 +55,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [TodoDataService, ApiService, TodoFilterService],
+  providers: [TodoDataService, ApiService, TodoFilterService, AuthenticationService, CanActivateAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

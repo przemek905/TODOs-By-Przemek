@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TodoDataService } from '../todo-data.service';
 import { Todo } from '../todo';
 import { TodoListComponent } from '../todo-list/todo-list.component';
@@ -16,6 +17,7 @@ export class TodosComponent implements OnInit {
   hideTodo: boolean = false;
 
   constructor(
+    private router: Router,
     private todoDataService: TodoDataService,
     private todoFilterService: TodoFilterService
   ) {
@@ -27,6 +29,11 @@ export class TodosComponent implements OnInit {
       .subscribe(
         (todos) => {
           this.todos = todos;
+        },
+        (error) => {
+        this.router.navigate(['welcome']);
+        console.error('An error occurred in todos component, navigating to login: ', error);
+
         }
       );
   }

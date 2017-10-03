@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location }          from '@angular/common';
+import { AuthenticationService } from './authentication.service';
 
 
 @Component({
@@ -10,13 +11,13 @@ import { Location }          from '@angular/common';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private authService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   goBack(): void {
   this.location.back();
-}
+  }
 
 }
