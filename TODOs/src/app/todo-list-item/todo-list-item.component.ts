@@ -25,9 +25,6 @@ export class TodoListItemComponent {
   @Output()
   enableEditTodoDoubleClick: EventEmitter<Todo> = new EventEmitter();
 
-  @Output()
-  showActiveTodos: EventEmitter<Todo[]> = new EventEmitter();
-
   'todo.title': string;
 
   isReadOnly: boolean = true;

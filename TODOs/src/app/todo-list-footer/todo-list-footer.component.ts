@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo';
 import { TodoFilterService, HidingTodos } from '../todo-filter.service';
+import { TodoDataService } from '../todo-data.service';
 
 @Component({
   selector: 'app-todo-list-footer',
@@ -13,15 +14,9 @@ export class TodoListFooterComponent {
   todos: Todo[];
 
   @Output()
-  showActiveTodos: EventEmitter<Todo[]> = new EventEmitter();
+  clear: EventEmitter<Todo> = new EventEmitter();
 
-  @Output()
-  showAllTodos: EventEmitter<Todo[]> = new EventEmitter();
-
-  @Output()
-  showCompletedTodos: EventEmitter<Todo[]> = new EventEmitter();
-
-  constructor(private todoFilterService:TodoFilterService) {
+  constructor(private todoDataService: TodoDataService, private todoFilterService:TodoFilterService) {
   }
 
   todoCount(): number {
@@ -47,6 +42,14 @@ export class TodoListFooterComponent {
   showCompleted(todos: Todo[]) {
     this.todoFilterService.updateHiddenFlag(HidingTodos.Completed);
     console.log('Completed From Footer');
+  }
+
+  deleteCompleted(todos: Todo[]) {
+    for (let todo of this.todos) {
+      if (todo.complete) {
+        this.clear.emit(todo);
+      }
+    }
   }
 
 }

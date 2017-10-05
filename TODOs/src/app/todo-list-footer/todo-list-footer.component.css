@@ -58,3 +58,7 @@
 .filters li button.selected {
 	border-color: rgba(175, 47, 47, 0.2);
 }
+
+.right {
+	float: right;
+}

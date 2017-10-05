@@ -4,5 +4,5 @@
   <app-todo-list [todos]="todos" (toggleComplete)="onToggleTodoComplete($event)"
                  (remove)="onRemoveTodo($event)" (editTodo)="onUpdateTodo($event)">
   </app-todo-list>
-  <app-todo-list-footer [todos]="todos"></app-todo-list-footer>
+  <app-todo-list-footer [todos]="todos" (clear)="onRemoveTodo($event)"></app-todo-list-footer>
 </section>
