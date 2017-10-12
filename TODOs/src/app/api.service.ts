@@ -28,11 +28,11 @@ export class ApiService {
 
   public getAllTodos(): Observable<Todo[]> {
     return this.http
-      .get(API_URL + '/todos', {headers: this.headers})
+      .get(API_URL + '/todos?user=' + JSON.parse(localStorage.getItem('currentUser')).username, {headers: this.headers})
       .map(response => {
         const todos = response.json();
         let list : Todo[] = new Array<Todo>();
-        for (let todo of todos._embedded.todos) {
+        for (let todo of todos) {
           list.push(new Todo(todo));
         }
         //return todos.map((todo) => new Todo(todo));

@@ -16,6 +16,7 @@ import { TodosComponent } from './todos/todos.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './authentication.service';
 import { CanActivateAuthGuard } from './CanActivateAuthGuard';
+import { SignupComponent } from './signup/signup.component';
 
 
 const appRoutes: Routes = [
@@ -35,6 +36,12 @@ const appRoutes: Routes = [
   { path: '',
     redirectTo: 'welcome',
     pathMatch: 'full'
+  },
+  { path: 'welcome/users/sign-up',
+    component: SignupComponent
+  },
+  { path: 'logout/users/sign-up',
+    component: SignupComponent
   }
 ];
 
@@ -47,7 +54,8 @@ const appRoutes: Routes = [
     TodoListFooterComponent,
     WelcomeComponent,
     TodosComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     FormsModule,

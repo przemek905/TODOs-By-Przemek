@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import { User } from './user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -8,6 +9,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class AuthenticationService {
     private authUrl = 'http://localhost:8080/login';
+    private signUrl = 'http://localhost:8080/users/sign-up';
     private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {
@@ -46,5 +48,14 @@ export class AuthenticationService {
     logout(): void {
         // clear token remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+    }
+
+    signup(user: User): Observable<User> {
+      return this.http.post(this.signUrl, user)
+          .map((response: Response) => {
+            return new User(response.json());
+          })
+          .catch((error:any) => {
+            return Observable.throw(error.message || 'Server error');})
     }
 }

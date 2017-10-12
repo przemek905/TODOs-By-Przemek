@@ -1,5 +1,5 @@
 <nav class="navbar">
-  <a routerLink="/welcome" routerLinkActive="active">Welcome</a>
+  <a routerLink="/welcome" *ngIf="!authService.isLoggedIn()" routerLinkActive="active">Welcome</a>
   <a routerLink="/todos" routerLinkActive="active">Todos</a>
   <a id="out" (click)="authService.logout()" *ngIf="authService.isLoggedIn()" routerLink="/logout" routerLinkActive="active">Logout</a>
 </nav>
